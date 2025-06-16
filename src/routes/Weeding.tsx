@@ -6,7 +6,7 @@ import Button from '#components/Button';
 import Countdown from '#components/CountDown';
 
 const Weeding = () => {
-  const [password, setPassword] = useState('280795');
+  const [password, setPassword] = useState('');
   const [isSecret, setIsSecret] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [duration, setDuration] = useState<Duration | null>(null);
