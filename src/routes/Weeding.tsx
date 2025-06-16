@@ -1,13 +1,31 @@
+import { Duration, intervalToDuration } from 'date-fns';
 import { useEffect, useState } from 'react';
 import ConfettiExplosion from 'react-confetti-explosion';
 
 import Button from '#components/Button';
+import Countdown from '#components/CountDown';
 
 const Weeding = () => {
-  const [password, setPassword] = useState('');
+  const [password, setPassword] = useState('280795');
   const [isSecret, setIsSecret] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const [daysLeft, setDaysLeft] = useState(0);
+  const [duration, setDuration] = useState<Duration | null>(null);
+  const [weedingDate] = useState(new Date(import.meta.env.VITE_WEEDING_DATE));
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const now = new Date();
+
+      const duration = intervalToDuration({
+        start: weedingDate,
+        end: now,
+      });
+
+      setDuration(duration);
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [weedingDate]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -15,10 +33,6 @@ const Weeding = () => {
     const secret = import.meta.env.VITE_SECRET;
     if (password === secret) {
       setIsSecret(true);
-      const days =
-        new Date(import.meta.env.VITE_WEEDING_DATE).getTime() -
-        new Date().getTime();
-      setDaysLeft(Math.floor(days / (1000 * 60 * 60 * 24)));
     } else {
       setErrorMessage('Oh no! Wrong key. Try again!');
       setIsSecret(false);
@@ -34,7 +48,7 @@ const Weeding = () => {
 
   return (
     <div className="grid h-dvh w-screen place-items-center bg-purple-400 p-6">
-      <div className="w-full max-w-md rounded-xl bg-purple-500 p-6 shadow-xl">
+      <div className="w-full max-w-screen-sm rounded-xl bg-purple-500 p-6 shadow-xl">
         {!isSecret ? (
           <form className="space-y-6" onSubmit={handleSubmit}>
             <input
@@ -57,10 +71,14 @@ const Weeding = () => {
             )}
           </form>
         ) : (
-          <div className="grid h-[300px] w-full place-content-center overflow-hidden text-center text-5xl font-bold text-purple-800">
+          <div className="grid h-[300px] text-5xl font-bold text-purple-800">
             <ConfettiExplosion particleCount={500} duration={5000} force={1} />
-            <span className="text-9xl drop-shadow-lg">{daysLeft}</span>
-            days left
+            {duration && (
+              <div className="text-center">
+                <h3 className="mb-5 text-5xl text-white">Days Past</h3>
+                <Countdown duration={duration} />
+              </div>
+            )}
           </div>
         )}
       </div>
