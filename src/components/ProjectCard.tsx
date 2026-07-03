@@ -18,7 +18,7 @@ const ProjectCard = ({ project }: { project: ProjectType }) => {
   };
 
   return (
-    <div className="overflow-hidden rounded-xl bg-white-full shadow-md dark:bg-dark-700">
+    <div className="bg-white-full dark:bg-dark-700 overflow-hidden rounded-xl shadow-md">
       <>
         <a
           onClick={handelImageClick}
@@ -34,11 +34,11 @@ const ProjectCard = ({ project }: { project: ProjectType }) => {
         </a>
       </>
 
-      <div className="flex flex-col justify-between bg-white-full p-4 dark:bg-dark/10">
-        <h3 className="text-center font-serif text-xl font-bold text-dark-900 dark:text-white">
+      <div className="bg-white-full dark:bg-dark/10 flex flex-col justify-between p-4">
+        <h3 className="text-dark-900 text-center font-serif text-xl font-bold dark:text-white">
           {project.title}
         </h3>
-        <div className="mx-auto my-2 w-full rounded-md bg-slate-400/20 pb-3 pt-2">
+        <div className="mx-auto my-2 w-full rounded-md bg-slate-400/20 pt-2 pb-3">
           <h4 className="mb-2 text-center text-sm font-medium capitalize dark:text-white">
             Coding done with
           </h4>
@@ -70,7 +70,7 @@ const ProjectCard = ({ project }: { project: ProjectType }) => {
             href={project.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 rounded-md bg-secondary py-2 text-sm font-medium text-white transition-colors duration-300 ease-in-out hover:bg-secondary-500"
+            className="bg-secondary hover:bg-secondary-500 flex items-center justify-center gap-2 rounded-md py-2 text-sm font-medium text-white transition-colors duration-300 ease-in-out"
           >
             <FontAwesomeIcon icon={faEye} />
             <span>See Live</span>
@@ -79,7 +79,7 @@ const ProjectCard = ({ project }: { project: ProjectType }) => {
             href={project.repo}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 rounded-md bg-dark-900 py-2 text-sm font-medium text-white transition-colors duration-300 ease-in-out hover:bg-dark-700"
+            className="bg-dark-900 hover:bg-dark-700 flex items-center justify-center gap-2 rounded-md py-2 text-sm font-medium text-white transition-colors duration-300 ease-in-out"
           >
             <FontAwesomeIcon icon={faGithub} />
             <span>Source Code</span>

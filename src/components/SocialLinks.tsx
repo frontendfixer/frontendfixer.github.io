@@ -13,7 +13,7 @@ const SocialLinks = ({ inverted }: { inverted?: boolean }) => {
             className={cn(
               'h-8 w-8',
               inverted ? 'text-white-full' : 'text-dark',
-              'shadow-sm transition-transform duration-300 ease-linear hover:-translate-y-1 hover:text-primary dark:text-white dark:hover:text-primary-400',
+              'hover:text-primary dark:hover:text-primary-400 shadow-xs transition-transform duration-300 ease-linear hover:-translate-y-1 dark:text-white',
             )}
           />
         </a>

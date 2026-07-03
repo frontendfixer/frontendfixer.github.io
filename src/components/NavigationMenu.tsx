@@ -50,7 +50,7 @@ const NavigationMenu = ({ openState }: { openState: boolean }) => {
             <li key={item.id}>
               <a
                 href={item.path}
-                className="rounded-md px-4 py-2 font-medium text-dark transition-colors duration-200 ease-linear hover:bg-gray-700 hover:text-white dark:text-white"
+                className="text-dark rounded-md px-4 py-2 font-medium transition-colors duration-200 ease-linear hover:bg-gray-700 hover:text-white dark:text-white"
                 onClick={handelNavigation}
               >
                 {item.itemName}
@@ -63,7 +63,7 @@ const NavigationMenu = ({ openState }: { openState: boolean }) => {
       {/* Mobile Navbar */}
       <nav
         className={cn(
-          'mt-3 grid w-full overflow-hidden rounded-md bg-white-full px-3 transition-[grid-template-rows]  duration-300 ease-linear md:hidden dark:bg-dark-700',
+          'bg-white-full dark:bg-dark-700 mt-3 grid w-full overflow-hidden rounded-md px-3 transition-[grid-template-rows] duration-300 ease-linear md:hidden',
           !openState ? 'grid-rows-[0fr]' : 'grid-rows-[1fr]',
         )}
       >
@@ -80,7 +80,7 @@ const NavigationMenu = ({ openState }: { openState: boolean }) => {
                   <a
                     href={item.path}
                     onClick={handelNavigation}
-                    className="transition-color dark:hover:bg-dark-300 relative w-full rounded bg-white py-2 text-center font-medium text-dark duration-1000 ease-linear hover:bg-gray-300 dark:bg-dark-900 dark:text-white"
+                    className="transition-color dark:hover:bg-dark-300 text-dark dark:bg-dark-900 relative w-full rounded-sm bg-white py-2 text-center font-medium duration-1000 ease-linear hover:bg-gray-300 dark:text-white"
                   >
                     {item.itemName}
                   </a>

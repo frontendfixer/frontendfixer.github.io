@@ -9,7 +9,7 @@ const formatTime = (time: number | undefined) => {
 const Countdown = ({ duration }: { duration: Duration }) => {
   return (
     <div className="p-3">
-      <div className="grid grid-cols-[repeat(3,minmax(100px,1fr))] gap-4 text-center ">
+      <div className="grid grid-cols-[repeat(3,minmax(100px,1fr))] gap-4 text-center">
         <div className="transform rounded-xl bg-purple-800 p-4 shadow-md transition-transform duration-200 hover:-translate-y-1">
           <div className="text-7xl font-bold text-yellow-300">
             {formatTime(duration.years ?? 0)}

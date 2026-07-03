@@ -1,6 +1,6 @@
 const Intro = () => {
   return (
-    <div className="grid place-content-center  text-white">
+    <div className="grid place-content-center text-white">
       <h2 className="mb-3 text-3xl font-bold sm:text-center sm:text-4xl">
         Hi, I’m Lakshmikanta. Nice to meet you.
       </h2>

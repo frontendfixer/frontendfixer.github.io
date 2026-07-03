@@ -13,14 +13,14 @@ const Home = () => {
   return (
     <>
       <BackToTop />
-      <main className="bg-white dark:bg-dark-900">
+      <main className="dark:bg-dark-900 bg-white">
         <section id="hero">
           <Container>
             <AltHeroSection />
           </Container>
         </section>
-        <section id="about" className=" pb-5">
-          <div className=" bg-primary-700 pb-32 pt-24">
+        <section id="about" className="pb-5">
+          <div className="bg-primary-700 pt-24 pb-32">
             <div className="px-2 pb-16">
               <Intro />
             </div>
@@ -32,15 +32,15 @@ const Home = () => {
             <LanguageAndTool />
           </Container>
         </section>
-        <section className="pb-16 pt-24" id="projects">
+        <section className="pt-24 pb-16" id="projects">
           <Container>
-            <h2 className="mb-16 text-center text-4xl font-bold capitalize text-dark-900 drop-shadow-md dark:text-gray-50 lg:text-6xl">
+            <h2 className="text-dark-900 mb-16 text-center text-4xl font-bold capitalize drop-shadow-md lg:text-6xl dark:text-gray-50">
               My recent projects
             </h2>
             <RecentWork />
           </Container>
         </section>
-        <section id="contact" className="mt-40 bg-secondary/20 pb-16">
+        <section id="contact" className="bg-secondary/20 mt-40 pb-16">
           <Container>
             <div className="relative -top-20">
               <ContactCapsule />
@@ -51,7 +51,7 @@ const Home = () => {
           </Container>
         </section>
       </main>
-      <footer className="bg-dark-900 pb-6 pt-24">
+      <footer className="bg-dark-900 pt-24 pb-6">
         <Container>
           <Footer />
         </Container>
