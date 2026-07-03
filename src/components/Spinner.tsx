@@ -6,7 +6,7 @@ const Spinner = ({ size }: { size: number }) => {
       className={cn(
         'relative',
         `w-${size} h-${size}`,
-        'animate-spin rounded-full border-4 border-secondary-400 border-t-white-full',
+        'border-secondary-400 border-t-white-full animate-spin rounded-full border-4',
       )}
     >
       <span className="sr-only">Loading...</span>

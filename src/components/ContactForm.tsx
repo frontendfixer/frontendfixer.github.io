@@ -110,7 +110,7 @@ const ContactForm = () => {
       </div>
       <div className="input__group">
         {!validator.isLength(inputs.message, { min: 20 }) ? (
-          <span className="pointer-events-none absolute bottom-1 right-2 text-[12px] text-red-400">
+          <span className="pointer-events-none absolute right-2 bottom-1 text-[12px] text-red-400">
             Message should be at least 20 characters
           </span>
         ) : (
@@ -133,7 +133,7 @@ const ContactForm = () => {
         </label>
       </div>
       {form.status === 'rejected' ? (
-        <span className="-mt-6 block animate-slideUp text-center text-sm font-medium text-red-700">
+        <span className="animate-slideUp -mt-6 block text-center text-sm font-medium text-red-700">
           Network error. Please try again!
         </span>
       ) : (

@@ -48,14 +48,14 @@ const Weeding = () => {
 
   return (
     <div className="grid h-dvh w-screen place-items-center bg-purple-400 p-6">
-      <div className="w-full max-w-screen-sm rounded-xl bg-purple-500 p-6 shadow-xl">
+      <div className="w-full max-w-(--breakpoint-sm) rounded-xl bg-purple-500 p-6 shadow-xl">
         {!isSecret ? (
           <form className="space-y-6" onSubmit={handleSubmit}>
             <input
               type="text"
               value={password}
               onChange={e => setPassword(e.target.value)}
-              className="w-full rounded-lg bg-purple-200 p-2 text-center text-5xl font-bold text-purple-800 outline-none placeholder:text-purple-400"
+              className="w-full rounded-lg bg-purple-200 p-2 text-center text-5xl font-bold text-purple-800 outline-hidden placeholder:text-purple-400"
               placeholder="SECRET"
             />
             <Button

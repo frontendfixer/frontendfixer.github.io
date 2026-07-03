@@ -1,0 +1,8 @@
+[build]
+builder = "RAILPACK"
+buildCommand = "bun run build"
+watchPatterns = ["src/**", "public/**", "index.html", "vite.config.ts", "package.json", "bun.lock"]
+
+[deploy]
+healthcheckPath = "/"
+restartPolicyType = "ON_FAILURE"

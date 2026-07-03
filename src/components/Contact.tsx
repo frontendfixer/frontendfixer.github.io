@@ -18,7 +18,7 @@ const Contact = () => {
           className="mx-auto h-64 w-64 sm:h-96 sm:w-96"
         />
       </div>
-      <div className="rounded-xl bg-secondary/40 sm:max-w-lg">
+      <div className="bg-secondary/40 rounded-xl sm:max-w-lg">
         {form.status !== 'completed' ? <ContactForm /> : <MessageSent />}
       </div>
     </div>

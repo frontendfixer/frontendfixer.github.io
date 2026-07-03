@@ -12,7 +12,7 @@ const Container = ({
   return (
     <div
       className={cn(
-        `max-w-[90rem]`,
+        `max-w-360`,
         fullWidth && 'w-full',
         !fullWidth && 'w-[96%]',
         `mx-auto`,

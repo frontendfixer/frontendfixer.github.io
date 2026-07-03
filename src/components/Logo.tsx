@@ -20,8 +20,8 @@ const Logo = ({ large, variant }: { large?: boolean; variant: string }) => {
               mixBlendMode: 'normal',
               fill: `${
                 variant === 'dark'
-                  ? 'hsl(var(--color-primary-400))'
-                  : 'hsl(var(--color-primary-600))'
+                  ? 'var(--color-primary-400)'
+                  : 'var(--color-primary-600)'
               }`,
               fillOpacity: 1,
               stroke: 'none',
