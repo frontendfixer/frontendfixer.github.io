@@ -29,18 +29,18 @@ export function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative overflow-hidden pt-32 pb-20 md:pt-48 md:pb-32"
+      className="relative overflow-hidden pt-24 pb-20 md:pt-40 md:pb-32"
     >
       {/* Background Glow */}
-      <div className="bg-accent-primary/10 pointer-events-none absolute top-0 left-1/2 h-[520px] w-full max-w-3xl -translate-x-1/2 rounded-full blur-[120px]" />
+      <div className="bg-accent-primary/10 pointer-events-none absolute top-0 left-1/2 h-130 w-full max-w-3xl -translate-x-1/2 rounded-full blur-[120px]" />
 
       <Container>
-        <div className="grid items-center gap-16 lg:grid-cols-[3fr_2fr]">
+        <div className="grid items-center gap-8 md:gap-16 lg:grid-cols-[3fr_2fr]">
           <div>
             {/* Availability Badge */}
             <Reveal>
-              <div className="border-border bg-surface/70 mb-6 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm backdrop-blur-md">
-                <Briefcase className="text-accent-primary h-4 w-4" />
+              <div className="border-border bg-surface/70 mb-4 inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-xs backdrop-blur-md md:mb-6 md:py-2 md:text-sm">
+                <Briefcase className="text-accent-primary size-3 md:size-4" />
                 <span className="text-text-secondary">
                   Available for freelance projects
                 </span>
@@ -49,7 +49,7 @@ export function HeroSection() {
 
             {/* Headline */}
             <Reveal delay={0.05}>
-              <h1 className="max-w-3xl text-5xl leading-[1.05] font-bold tracking-tight text-balance md:text-6xl lg:text-7xl">
+              <h1 className="max-w-3xl text-4xl leading-[1.05] font-bold tracking-tight text-balance md:text-6xl lg:text-7xl">
                 I build production-ready <Accent>SaaS</Accent> platforms
                 <br />
                 from MVP to <Accent>enterprise-grade</Accent> infrastructure
@@ -58,7 +58,7 @@ export function HeroSection() {
 
             {/* Description */}
             <Reveal delay={0.1}>
-              <p className="text-text-secondary mt-8 max-w-xl text-lg leading-8 md:text-xl">
+              <p className="text-text-secondary mt-4 max-w-xl md:mt-8 md:text-xl md:leading-8">
                 I help startups and growing businesses design, build, and scale
                 secure cloud-native SaaS products using React, NestJS, AWS, and
                 modern backend architecture.
@@ -67,7 +67,7 @@ export function HeroSection() {
 
             {/* CTA */}
             <Reveal delay={0.15}>
-              <div className="mt-10 flex flex-wrap items-center gap-4">
+              <div className="mt-6 flex flex-wrap items-center gap-4 md:mt-10">
                 <ContactButton />
 
                 {/*<a*/}
