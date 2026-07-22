@@ -8,7 +8,7 @@ const metrics = [
 ];
 export function Metrics() {
   return (
-    <div className="bg-surface/30 border-border border-y py-20">
+    <div className="bg-surface/30 border-border border-y py-12 md:py-20">
       <Container>
         <div className="divide-border/0 md:divide-border grid grid-cols-2 gap-8 divide-x md:grid-cols-4">
           {metrics.map((metric, i) => (

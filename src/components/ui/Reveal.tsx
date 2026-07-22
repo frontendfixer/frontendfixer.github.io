@@ -31,6 +31,7 @@ export function Reveal({
           delay: shouldReduceMotion ? 0 : delay,
           ease: 'easeOut',
         }}
+        className="h-full"
       >
         {children}
       </motion.div>
