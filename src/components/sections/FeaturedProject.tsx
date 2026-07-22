@@ -1,8 +1,13 @@
 import { faExternalLink } from '@fortawesome/free-solid-svg-icons';
 import { CheckCircle2, Lock, Rocket, Server } from 'lucide-react';
 
-import vaultDashboard from '#assets/images/portfolio/vaultdrive-dashboard.webp';
-import { GlassLaptopPanel } from '#components/GlassLaptopPanel';
+import vaultDashboard1 from '#assets/images/portfolio/featured-project/vaultdrive-dashboard-0.webp';
+import vaultDashboard2 from '#assets/images/portfolio/featured-project/vaultdrive-dashboard-1.webp';
+import vaultDashboard5 from '#assets/images/portfolio/featured-project/vaultdrive-dashboard-2.webp';
+import vaultDashboard3 from '#assets/images/portfolio/featured-project/vaultdrive-dashboard-4.webp';
+import vaultDashboard4 from '#assets/images/portfolio/featured-project/vaultdrive-dashboard-5.webp';
+import vaultDashboard6 from '#assets/images/portfolio/featured-project/vaultdrive-dashboard-6.webp';
+import { ProjectGallery } from '#components/project-gallery';
 import { LinkButton } from '#components/ui/LinkButton';
 
 import { Reveal } from '../ui/Reveal';
@@ -17,12 +22,12 @@ const highlights = [
   {
     icon: Rocket,
     title: 'Scalable',
-    value: 'Lambda + SQS',
+    value: 'AWS Lambda + SQS',
   },
   {
     icon: Server,
     title: 'Cloud Native',
-    value: 'AWS + Cloudflare R2',
+    value: 'AWS S3 + Cloudflare R2',
   },
 ];
 
@@ -38,10 +43,11 @@ const technologies = [
   'NestJS',
   'AWS',
   'Lambda',
+  'Cloudflare R2',
   'Prisma',
   'Docker',
-  'MySQL',
-  'Cloudflare R2',
+  'PostgreSQL',
+  'Redis',
 ];
 
 export function FeaturedProject() {
@@ -66,7 +72,23 @@ export function FeaturedProject() {
       <div className="grid items-center gap-16 lg:grid-cols-12">
         {/* Screenshot */}
         <Reveal className="lg:col-span-6">
-          <GlassLaptopPanel image={vaultDashboard} alt="VaultDrive dashboard" />
+          <ProjectGallery
+            title="VaultDrive"
+            images={[
+              { src: vaultDashboard1, alt: 'VaultDrive dashboard' },
+              {
+                src: vaultDashboard2,
+                alt: 'VaultDrive category wise dashboard',
+              },
+              { src: vaultDashboard3, alt: 'VaultDrive fils & folders' },
+              { src: vaultDashboard4, alt: 'VaultDrive fils & folders' },
+              {
+                src: vaultDashboard5,
+                alt: 'VaultDrive profile monthly activity',
+              },
+              { src: vaultDashboard6, alt: 'VaultDrive user cloud onboarding' },
+            ]}
+          />
         </Reveal>
 
         {/* Content */}

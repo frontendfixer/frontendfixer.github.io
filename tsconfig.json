@@ -49,6 +49,9 @@
       ],
       "#common/*": [
         "src/components/common/*"
+      ],
+      "#project-gallery/*": [
+        "src/components/project-gallery/*"
       ]
     }
   },
