@@ -42,7 +42,7 @@ export function Services() {
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {services.map((service, i) => (
-          <Reveal key={service.title} delay={i * 0.1}>
+          <Reveal key={service.title} delay={i * 0.1} className="h-full">
             <div className="group glass-panel hover:bg-surface h-full rounded-3xl p-8 transition-colors duration-300">
               <div className="bg-accent-primary/10 mb-6 flex h-12 w-12 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-110">
                 <service.icon className="text-accent-primary h-6 w-6" />
