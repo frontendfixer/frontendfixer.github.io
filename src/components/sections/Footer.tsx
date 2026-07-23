@@ -2,6 +2,8 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ArrowUpRight, Mail } from 'lucide-react';
 
+import { SOCIALS_USERNAME } from '#config/social.ts';
+
 import { Container } from '../ui/Container';
 
 export function Footer() {
@@ -65,15 +67,15 @@ export function Footer() {
 
             <div className="space-y-4">
               <a
-                href="mailto:frontendfixer@email.com"
+                href={`mailto:${SOCIALS_USERNAME.email}`}
                 className="text-text-secondary hover:text-accent-primary flex items-center gap-3 transition-colors"
               >
                 <Mail className="h-4 w-4" />
-                frontendfixer@email.com
+                Gmail
               </a>
 
               <a
-                href="https://github.com/frontendfixer"
+                href={`https://github.com/${SOCIALS_USERNAME.GITHUB}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-text-secondary hover:text-accent-primary flex items-center gap-3 transition-colors"
@@ -83,7 +85,7 @@ export function Footer() {
               </a>
 
               <a
-                href="https://linkedin.com/in/frontendfixer"
+                href={`https://linkedin.com/in/${SOCIALS_USERNAME.linkedin}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-text-secondary hover:text-accent-primary flex items-center gap-3 transition-colors"

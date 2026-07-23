@@ -1,3 +1,5 @@
+import { SOCIALS_USERNAME } from '#config/social.ts';
+
 export interface OpenGraphConfig {
   type: string;
   image: string;
@@ -32,7 +34,7 @@ export interface SiteConfig {
   robots: string;
 }
 
-const siteUrl = 'https://frontendfixer.dev';
+const siteUrl = import.meta.env.VITE_SITE_URL;
 
 export const siteConfig: SiteConfig = {
   siteName: 'FrontendFixer',
@@ -43,9 +45,9 @@ export const siteConfig: SiteConfig = {
   locale: 'en_US',
   language: 'en',
   author: 'Lakshmikanta Patra',
-  email: 'frontendfixer@email.com',
-  github: 'https://github.com/frontendfixer',
-  linkedin: 'https://linkedin.com/in/frontendfixer',
+  email: SOCIALS_USERNAME.email,
+  github: 'https://github.com/' + SOCIALS_USERNAME.GITHUB,
+  linkedin: 'https://linkedin.com/in/' + SOCIALS_USERNAME.linkedin,
   themeColor: '#14b8a6',
   backgroundColor: '#09090B',
   keywords: [
@@ -62,8 +64,8 @@ export const siteConfig: SiteConfig = {
   ],
   twitter: {
     card: 'summary_large_image',
-    site: '@frontendfixer',
-    creator: '@frontendfixer',
+    site: '@' + SOCIALS_USERNAME.twitter,
+    creator: '@' + SOCIALS_USERNAME.twitter,
     image: `${siteUrl}/twitter-image.png`,
   },
   openGraph: {

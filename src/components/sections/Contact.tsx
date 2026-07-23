@@ -2,60 +2,141 @@ import emailjs from '@emailjs/browser';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ArrowUpRight, Loader2, Mail, MapPin, Send } from 'lucide-react';
-import { ChangeEvent, FormEvent, useMemo, useRef, useState } from 'react';
+import {
+  ChangeEvent,
+  SubmitEventHandler,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import validator from 'validator';
 
 import workspaceImage from '#assets/images/portfolio/workspace-placeholder.png';
+import { SOCIALS_USERNAME } from '#config/social.ts';
 
 import { Button } from '../ui/Button';
 import { Reveal } from '../ui/Reveal';
 import { Section } from '../ui/Section';
 
-export function Contact() {
-  const initial = { name: '', email: '', message: '' };
-  const [inputs, setInputs] = useState(initial);
-  const [status, setStatus] = useState<
-    'idle' | 'loading' | 'completed' | 'rejected'
-  >('idle');
-  const formRef = useRef<HTMLFormElement>(null);
+type ContactFormInputs = {
+  name: string;
+  email: string;
+  message: string;
+};
 
-  const errors = useMemo(
-    () => ({
-      name: inputs.name.trim().length < 2,
-      email: !validator.isEmail(inputs.email),
-      message: inputs.message.trim().length < 20,
-    }),
-    [inputs],
+type ContactFormErrors = Record<keyof ContactFormInputs, boolean>;
+
+type EmailJsCredentials = {
+  serviceId?: string;
+  templateId?: string;
+  publicKey?: string;
+};
+
+type SubmissionStatus = 'idle' | 'loading' | 'completed' | 'rejected';
+
+const INITIAL_CONTACT_FORM_INPUTS: ContactFormInputs = {
+  name: '',
+  email: '',
+  message: '',
+};
+
+const STATUS_RESET_DELAY_MS = 5000;
+const SUBMITTED_AT_LOCALE = 'en-IN';
+
+const getEmailJsCredentials = (): EmailJsCredentials => ({
+  serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID,
+  templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+  publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+});
+
+const hasEmailJsCredentials = (
+  credentials: EmailJsCredentials,
+): credentials is Required<EmailJsCredentials> =>
+  Boolean(
+    credentials.serviceId && credentials.templateId && credentials.publicKey,
   );
 
-  const invalid = errors.name || errors.email || errors.message;
+const validateContactForm = (inputs: ContactFormInputs): ContactFormErrors => ({
+  name: inputs.name.trim().length < 2,
+  email: !validator.isEmail(inputs.email),
+  message: inputs.message.trim().length < 20,
+});
 
-  const onChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
-    setInputs(v => ({ ...v, [e.target.name]: e.target.value }));
+export function Contact() {
+  const emailJsCredentials = useMemo(getEmailJsCredentials, []);
+  const formRef = useRef<HTMLFormElement>(null);
 
-  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (invalid || !formRef.current) return;
+  const [formInputs, setFormInputs] = useState<ContactFormInputs>(
+    INITIAL_CONTACT_FORM_INPUTS,
+  );
+  const [status, setStatus] = useState<SubmissionStatus>('idle');
+
+  useEffect(() => {
+    if (status !== 'completed' && status !== 'rejected') return;
+
+    const resetStatusTimer = window.setTimeout(() => {
+      setStatus('idle');
+    }, STATUS_RESET_DELAY_MS);
+
+    return () => window.clearTimeout(resetStatusTimer);
+  }, [status]);
+
+  const formErrors = useMemo(
+    () => validateContactForm(formInputs),
+    [formInputs],
+  );
+
+  const isFormInvalid =
+    formErrors.name || formErrors.email || formErrors.message;
+
+  const handleInputChange = (
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const { name, value } = event.target;
+
+    setFormInputs(currentInputs => ({
+      ...currentInputs,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit: SubmitEventHandler<HTMLFormElement> = async event => {
+    event.preventDefault();
+
+    if (isFormInvalid || !formRef.current) return;
+
     setStatus('loading');
+
+    if (!hasEmailJsCredentials(emailJsCredentials)) {
+      setStatus('rejected');
+      return;
+    }
+
     try {
-      const res = await emailjs.sendForm(
-        'service_qdjdol9',
-        'template_lobv7nq',
+      const response = await emailjs.sendForm(
+        emailJsCredentials.serviceId,
+        emailJsCredentials.templateId,
         formRef.current,
-        'G0MWsjYi9pbxnAwfJ',
+        emailJsCredentials.publicKey,
       );
-      if (res.status === 200) {
-        setInputs(initial);
+
+      if (response.status === 200) {
+        setFormInputs(INITIAL_CONTACT_FORM_INPUTS);
         setStatus('completed');
-      } else setStatus('rejected');
-    } catch {
+        return;
+      }
+
+      setStatus('rejected');
+    } catch (error) {
+      console.error(error);
       setStatus('rejected');
     }
   };
 
   return (
     <Section id="contact">
-      <div className="mx-auto mb-16 max-w-2xl text-center">
+      <div className="mx-auto mb-16 max-w-4xl text-center">
         <Reveal>
           <p className="text-accent-primary mb-3 text-sm font-semibold tracking-[0.2em] uppercase">
             Contact
@@ -78,6 +159,7 @@ export function Contact() {
               alt="Workspace"
               className="aspect-video w-full object-cover"
             />
+
             <div className="space-y-3 p-4">
               <div>
                 <h3 className="text-xl font-semibold">
@@ -91,9 +173,8 @@ export function Contact() {
               <div className="space-y-3 text-sm">
                 <div className="flex items-center gap-3">
                   <Mail className="text-accent-primary h-4 w-4" />
-                  <span>frontendfixer@email.com</span>
+                  <span>{SOCIALS_USERNAME.email}</span>
                 </div>
-
                 <div className="flex items-center gap-3">
                   <MapPin className="text-accent-primary h-4 w-4" />
                   <span>India · Remote Worldwide</span>
@@ -102,14 +183,14 @@ export function Contact() {
 
               <div className="flex gap-3 pt-2">
                 <a
-                  href="https://github.com/frontendfixer"
+                  href={`https://github.com/${SOCIALS_USERNAME.GITHUB}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <FontAwesomeIcon icon={faGithub} />
                 </a>
                 <a
-                  href="https://linkedin.com/mr.lakshmikanta"
+                  href={`https://linkedin.com/in/${SOCIALS_USERNAME.linkedin}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -121,37 +202,52 @@ export function Contact() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <form ref={formRef} onSubmit={onSubmit} className="space-y-5">
+          <form
+            ref={formRef}
+            onSubmit={handleSubmit}
+            className="space-y-2.5 md:space-y-5"
+          >
+            <input
+              type="hidden"
+              name="submittedAt"
+              value={new Date().toLocaleString(SUBMITTED_AT_LOCALE, {
+                dateStyle: 'medium',
+                timeStyle: 'short',
+              })}
+            />
+
             <input
               className="bg-surface border-border w-full rounded-xl border px-4 py-3"
               name="name"
               placeholder="Your Name"
-              value={inputs.name}
-              onChange={onChange}
+              value={formInputs.name}
+              onChange={handleInputChange}
             />
+
             <input
               className="bg-surface border-border w-full rounded-xl border px-4 py-3"
               name="email"
               type="email"
               placeholder="Email Address"
-              value={inputs.email}
-              onChange={onChange}
+              value={formInputs.email}
+              onChange={handleInputChange}
             />
+
             <textarea
               className="bg-surface border-border min-h-40 w-full rounded-xl border px-4 py-3"
               name="message"
               placeholder="Tell me about your project..."
-              value={inputs.message}
-              onChange={onChange}
+              value={formInputs.message}
+              onChange={handleInputChange}
             />
 
-            {status == 'completed' && (
+            {status === 'completed' && (
               <p className="text-sm text-green-400">
                 Thanks! I'll get back to you shortly.
               </p>
             )}
 
-            {status == 'rejected' && (
+            {status === 'rejected' && (
               <p className="text-sm text-red-400">
                 Failed to send. Please try again.
               </p>
@@ -160,10 +256,10 @@ export function Contact() {
             <Button
               type="submit"
               size="lg"
-              disabled={status == 'loading' || invalid}
+              disabled={status === 'loading' || isFormInvalid}
               className="w-full gap-2"
             >
-              {status == 'loading' ? (
+              {status === 'loading' ? (
                 <Loader2 className="h-5 w-5 animate-spin" />
               ) : (
                 <>
