@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <mask id="wrench-mask">
+      <!-- Base mask: Everything white is visible -->
+      <rect x="0" y="0" width="100%" height="100%" fill="white" />
+
+      <!-- Gap cutout for the intersecting forward slash -->
+      <line x1="250" y1="50" x2="250" y2="450" stroke="black" stroke-width="52" stroke-linecap="butt" transform="rotate(30, 250, 250)" />
+
+      <!-- Cutouts shaping the wrench itself (rotates with the wrench) -->
+      <g transform="rotate(-30, 250, 250)">
+        <!-- Top claw opening (mouth) -->
+        <rect x="238" y="75" width="24" height="40" fill="black" />
+        <!-- Bottom ring hole -->
+        <circle cx="250" cy="385" r="12" fill="black" />
+      </g>
+    </mask>
+  </defs>
+
+  <!-- Deep dark background matching the image -->
+  <rect x="0" y="0" width="100%" height="100%" fill="#030505" />
+
+  <!-- Outer Brackets [ ] -->
+  <g stroke="#1F8A96" stroke-width="32" fill="none" stroke-linejoin="miter" stroke-linecap="butt">
+    <path d="M 120 70 L 60 70 L 60 430 L 120 430" />
+    <path d="M 380 70 L 440 70 L 440 430 L 380 430" />
+  </g>
+
+  <!-- Inner Angle Brackets < > -->
+  <g stroke="#1F8A96" stroke-width="28" fill="none" stroke-linejoin="miter" stroke-linecap="butt">
+    <path d="M 180 180 L 110 250 L 180 320" />
+    <path d="M 320 180 L 390 250 L 320 320" />
+  </g>
+
+  <!-- Central Forward Slash / -->
+  <line x1="250" y1="87" x2="250" y2="413" stroke="#1F8A96" stroke-width="28" stroke-linecap="butt" transform="rotate(30, 250, 250)" />
+
+  <!-- Central Wrench \ (Masked for intersections and holes) -->
+  <g mask="url(#wrench-mask)">
+    <g transform="rotate(-30, 250, 250)" fill="#1F8A96">
+      <!-- Wrench Handle -->
+      <rect x="236" y="115" width="28" height="270" />
+      <!-- Wrench Top Head (Claw base) -->
+      <circle cx="250" cy="115" r="28" />
+      <!-- Wrench Bottom Head (Ring base) -->
+      <circle cx="250" cy="385" r="28" />
+    </g>
+  </g>
+</svg>
