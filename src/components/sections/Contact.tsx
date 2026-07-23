@@ -2,21 +2,40 @@ import emailjs from '@emailjs/browser';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ArrowUpRight, Loader2, Mail, MapPin, Send } from 'lucide-react';
-import { ChangeEvent, FormEvent, useMemo, useRef, useState } from 'react';
+import { ChangeEvent, useEffect, useMemo, useRef, useState } from 'react';
 import validator from 'validator';
 
 import workspaceImage from '#assets/images/portfolio/workspace-placeholder.png';
+import { SOCIALS_USERNAME } from '#config/social.ts';
 
 import { Button } from '../ui/Button';
 import { Reveal } from '../ui/Reveal';
 import { Section } from '../ui/Section';
 
 export function Contact() {
+  const EMAILJS_CREDENTIALS = useMemo(() => {
+    return {
+      serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+      publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+    };
+  }, []);
+
   const initial = { name: '', email: '', message: '' };
   const [inputs, setInputs] = useState(initial);
+
   const [status, setStatus] = useState<
     'idle' | 'loading' | 'completed' | 'rejected'
   >('idle');
+
+  useEffect(() => {
+    if (status === 'completed' || status === 'rejected') {
+      setTimeout(() => {
+        setStatus('idle');
+      }, 5000);
+    }
+  }, [status]);
+
   const formRef = useRef<HTMLFormElement>(null);
 
   const errors = useMemo(
@@ -33,29 +52,39 @@ export function Contact() {
   const onChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setInputs(v => ({ ...v, [e.target.name]: e.target.value }));
 
-  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  // @ts-ignore
+  const onSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (invalid || !formRef.current) return;
     setStatus('loading');
+
+    if (
+      !EMAILJS_CREDENTIALS.serviceId ||
+      !EMAILJS_CREDENTIALS.templateId ||
+      !EMAILJS_CREDENTIALS.publicKey
+    ) {
+      return setStatus('rejected');
+    }
     try {
       const res = await emailjs.sendForm(
-        'service_qdjdol9',
-        'template_lobv7nq',
+        EMAILJS_CREDENTIALS.serviceId,
+        EMAILJS_CREDENTIALS.templateId,
         formRef.current,
-        'G0MWsjYi9pbxnAwfJ',
+        EMAILJS_CREDENTIALS.publicKey,
       );
       if (res.status === 200) {
         setInputs(initial);
         setStatus('completed');
       } else setStatus('rejected');
-    } catch {
+    } catch (error) {
+      console.error(error);
       setStatus('rejected');
     }
   };
 
   return (
     <Section id="contact">
-      <div className="mx-auto mb-16 max-w-2xl text-center">
+      <div className="mx-auto mb-16 max-w-4xl text-center">
         <Reveal>
           <p className="text-accent-primary mb-3 text-sm font-semibold tracking-[0.2em] uppercase">
             Contact
@@ -91,7 +120,7 @@ export function Contact() {
               <div className="space-y-3 text-sm">
                 <div className="flex items-center gap-3">
                   <Mail className="text-accent-primary h-4 w-4" />
-                  <span>frontendfixer@email.com</span>
+                  <span>{SOCIALS_USERNAME.email}</span>
                 </div>
 
                 <div className="flex items-center gap-3">
@@ -102,14 +131,14 @@ export function Contact() {
 
               <div className="flex gap-3 pt-2">
                 <a
-                  href="https://github.com/frontendfixer"
+                  href={`https://github.com/${SOCIALS_USERNAME.GITHUB}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <FontAwesomeIcon icon={faGithub} />
                 </a>
                 <a
-                  href="https://linkedin.com/mr.lakshmikanta"
+                  href={`https://linkedin.com/in/${SOCIALS_USERNAME.linkedin}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -121,7 +150,19 @@ export function Contact() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <form ref={formRef} onSubmit={onSubmit} className="space-y-5">
+          <form
+            ref={formRef}
+            onSubmit={onSubmit}
+            className="space-y-2.5 md:space-y-5"
+          >
+            <input
+              type="hidden"
+              name="submittedAt"
+              value={new Date().toLocaleString('en-IN', {
+                dateStyle: 'medium',
+                timeStyle: 'short',
+              })}
+            />
             <input
               className="bg-surface border-border w-full rounded-xl border px-4 py-3"
               name="name"
