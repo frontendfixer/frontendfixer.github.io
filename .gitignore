@@ -13,6 +13,9 @@ dist
 dist-ssr
 *.local
 
+.env
+.env.*
+
 # TanStack Start / build output
 .output
 .nitro
