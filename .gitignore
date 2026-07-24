@@ -12,6 +12,13 @@ dist
 dist-ssr
 *.local
 
+# TanStack Start / build output
+.output
+.nitro
+.tanstack
+.vinxi
+src/routeTree.gen.ts
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

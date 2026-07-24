@@ -1,6 +1,5 @@
 import { Menu, Terminal, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { Outlet } from 'react-router-dom';
 
 import { ContactButton } from '#components/sections/ContactButton.tsx';
 import { Button } from '#components/ui/Button';
@@ -195,7 +194,6 @@ const Navigation = () => {
           </div>
         </div>
       </nav>
-      <Outlet />
     </>
   );
 };
