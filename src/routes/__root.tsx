@@ -1,13 +1,12 @@
 import '../index.css';
 
-import type { ReactNode } from 'react';
 import {
   createRootRoute,
   HeadContent,
-  Outlet,
   Scripts,
   ScrollRestoration,
 } from '@tanstack/react-router';
+import type { ReactNode } from 'react';
 
 import Navigation from '#components/layout/Navigation';
 import { siteConfig } from '#config/site';

@@ -1,7 +1,9 @@
+import { fileURLToPath, URL } from 'node:url';
+
 import tailwindcss from '@tailwindcss/vite';
 import { tanstackStart } from '@tanstack/react-start/plugin/vite';
 import react from '@vitejs/plugin-react-swc';
-import { fileURLToPath, URL } from 'node:url';
+import { nitro } from 'nitro/vite';
 import { defineConfig } from 'vite';
 import svgr from 'vite-plugin-svgr';
 
@@ -26,12 +28,7 @@ export default defineConfig({
       '#store': fileURLToPath(new URL('./src/store', import.meta.url)),
     },
   },
-  plugins: [
-    tanstackStart(),
-    tailwindcss(),
-    react(),
-    svgr(),
-  ],
+  plugins: [tanstackStart(), nitro(), tailwindcss(), react(), svgr()],
   server: {
     port: 5555,
     open: true,
