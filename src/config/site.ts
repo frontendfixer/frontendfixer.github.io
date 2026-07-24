@@ -75,11 +75,11 @@ export const siteConfig: SiteConfig = {
     card: 'summary_large_image',
     site: '@' + SOCIALS_USERNAME.twitter,
     creator: '@' + SOCIALS_USERNAME.twitter,
-    image: `${siteUrl}/twitter-image.png`,
+    image: `${siteUrl}/twitter-image.webp`,
   },
   openGraph: {
     type: 'website',
-    image: `${siteUrl}/og-image.png`,
+    image: `${siteUrl}/og-image.webp`,
     imageWidth: 1200,
     imageHeight: 630,
     imageAlt: 'FrontendFixer Portfolio',
