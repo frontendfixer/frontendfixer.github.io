@@ -1,6 +1,6 @@
+import { Outlet } from '@tanstack/react-router';
 import { Menu, Terminal, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { Outlet } from 'react-router-dom';
 
 import { ContactButton } from '#components/sections/ContactButton.tsx';
 import { Button } from '#components/ui/Button';

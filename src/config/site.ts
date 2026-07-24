@@ -34,7 +34,7 @@ export interface SiteConfig {
   robots: string;
 }
 
-const siteUrl = import.meta.env.VITE_SITE_URL;
+const siteUrl = import.meta.env.VITE_SITE_URL ?? 'https://frontendfixer.dev';
 
 export const siteConfig: SiteConfig = {
   siteName: 'FrontendFixer',
@@ -66,11 +66,11 @@ export const siteConfig: SiteConfig = {
     card: 'summary_large_image',
     site: '@' + SOCIALS_USERNAME.twitter,
     creator: '@' + SOCIALS_USERNAME.twitter,
-    image: `${siteUrl}/twitter-image.png`,
+    image: '/twitter-image.png',
   },
   openGraph: {
     type: 'website',
-    image: `${siteUrl}/og-image.png`,
+    image: '/og-image.png',
     imageWidth: 1200,
     imageHeight: 630,
     siteName: 'FrontendFixer',
