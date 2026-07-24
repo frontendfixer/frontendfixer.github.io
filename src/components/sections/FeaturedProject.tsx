@@ -60,7 +60,9 @@ export function FeaturedProject() {
             Featured Project
           </div>
 
-          <h2 className="text-4xl font-bold md:text-5xl">VaultDrive</h2>
+          <h2 className="font-display text-4xl font-bold md:text-5xl">
+            VaultDrive
+          </h2>
 
           <p className="text-text-secondary mt-5 text-lg leading-8">
             Enterprise cloud storage platform built for secure file management,
@@ -69,7 +71,7 @@ export function FeaturedProject() {
         </div>
       </Reveal>
 
-      <div className="grid items-center gap-16 lg:grid-cols-12">
+      <div className="grid items-center gap-8 sm:gap-16 lg:grid-cols-12">
         {/* Screenshot */}
         <Reveal className="lg:col-span-6">
           <ProjectGallery
@@ -95,18 +97,19 @@ export function FeaturedProject() {
         <div className="space-y-8 lg:col-span-6">
           {/* Highlight Cards */}
           <Reveal delay={0.1}>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+            <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 sm:gap-4">
               {highlights.map(item => {
                 const Icon = item.icon;
 
                 return (
                   <div
                     key={item.title}
-                    className="border-border bg-surface rounded-2xl border p-5"
+                    className="border-border bg-surface rounded-2xl border p-5 last:col-span-2 sm:last:col-span-1"
                   >
-                    <Icon className="text-accent-primary mb-4 h-5 w-5" />
-
-                    <h3 className="mb-1 font-semibold">{item.title}</h3>
+                    <div className="flex items-center gap-3">
+                      <Icon className="text-accent-primary mb-4 h-5 w-5" />
+                      <h3 className="mb-1 font-semibold">{item.title}</h3>
+                    </div>
 
                     <p className="text-text-secondary text-sm">{item.value}</p>
                   </div>

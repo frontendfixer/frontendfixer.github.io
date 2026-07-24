@@ -30,7 +30,7 @@ export function Services() {
 
       <Reveal>
         <div className="mx-auto mb-16 max-w-2xl text-center md:mb-24">
-          <h2 className="mb-6 text-3xl font-bold md:text-5xl">
+          <h2 className="font-display mb-6 text-3xl font-bold md:text-5xl">
             Expertise & Services
           </h2>
           <p className="text-text-secondary text-lg">
@@ -47,7 +47,9 @@ export function Services() {
               <div className="bg-accent-primary/10 mb-6 flex h-12 w-12 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-110">
                 <service.icon className="text-accent-primary h-6 w-6" />
               </div>
-              <h3 className="mb-4 text-xl font-bold">{service.title}</h3>
+              <h3 className="font-display mb-4 text-xl font-bold">
+                {service.title}
+              </h3>
               <p className="text-text-secondary leading-relaxed">
                 {service.description}
               </p>

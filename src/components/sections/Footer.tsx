@@ -16,7 +16,7 @@ export function Footer() {
           {/* Brand */}
           <div className="max-w-md">
             <a href="#hero" className="inline-flex items-center gap-3">
-              <div className="bg-accent-primary flex h-10 w-10 items-center justify-center rounded-xl font-bold text-black">
+              <div className="font-display bg-accent-primary flex h-10 w-10 items-center justify-center rounded-xl font-bold text-black">
                 LP
               </div>
 

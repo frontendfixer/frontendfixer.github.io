@@ -36,7 +36,7 @@ export function FAQ() {
     <Section id="faq" className="bg-surface/20 border-border border-y">
       <Reveal>
         <div className="mx-auto mb-16 max-w-2xl text-center md:mb-24">
-          <h2 className="mb-6 text-3xl font-bold md:text-5xl">
+          <h2 className="font-display mb-6 text-3xl font-bold md:text-5xl">
             Common Questions
           </h2>
           <p className="text-text-secondary text-lg">
@@ -51,7 +51,7 @@ export function FAQ() {
           <Reveal key={i} delay={i * 0.1}>
             <div className="glass-panel overflow-hidden rounded-2xl">
               <button
-                className="flex w-full items-center justify-between px-6 py-5 text-left focus:outline-hidden"
+                className="flex w-full items-center justify-between px-6 py-5 text-left hover:cursor-pointer focus:outline-hidden"
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
               >
                 <span className="text-lg font-medium text-white">

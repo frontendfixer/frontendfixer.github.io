@@ -33,7 +33,7 @@ export function TechStack() {
     <Section id="tech-stack" className="border-border bg-surface/20 border-y">
       <Reveal>
         <div className="mx-auto mb-16 max-w-2xl text-center md:mb-24">
-          <h2 className="mb-6 text-3xl font-bold md:text-5xl">
+          <h2 className="font-display mb-6 text-3xl font-bold md:text-5xl">
             Technical Arsenal
           </h2>
           <p className="text-text-secondary text-lg">

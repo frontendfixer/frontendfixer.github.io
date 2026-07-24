@@ -135,7 +135,7 @@ export function Contact() {
           <p className="text-accent-primary mb-3 text-sm font-semibold tracking-[0.2em] uppercase">
             Contact
           </p>
-          <h2 className="text-4xl font-bold md:text-5xl">
+          <h2 className="font-display text-4xl font-bold md:text-5xl">
             Let's build your next SaaS product.
           </h2>
           <p className="text-text-secondary mt-5 text-lg">

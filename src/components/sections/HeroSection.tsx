@@ -49,7 +49,7 @@ export function HeroSection() {
 
             {/* Headline */}
             <Reveal delay={0.05}>
-              <h1 className="max-w-3xl text-4xl leading-[1.05] font-bold tracking-tight text-balance md:text-6xl lg:text-7xl">
+              <h1 className="font-display max-w-3xl text-4xl leading-[1.05] font-bold tracking-tight text-balance md:text-6xl lg:text-7xl">
                 I build production-ready <Accent>SaaS</Accent> platforms
                 <br />
                 from MVP to <Accent>enterprise-grade</Accent> infrastructure

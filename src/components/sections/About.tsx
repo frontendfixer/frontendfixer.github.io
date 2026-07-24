@@ -62,7 +62,7 @@ export function About() {
               About Me
             </div>
 
-            <h2 className="max-w-3xl text-4xl leading-tight font-bold md:text-5xl">
+            <h2 className="font-display max-w-3xl text-4xl leading-tight font-bold md:text-5xl">
               Building modern SaaS products with
               <span className="text-accent-primary">
                 {' '}
@@ -99,7 +99,9 @@ export function About() {
                   >
                     <Icon className="text-accent-primary mb-4 h-6 w-6" />
 
-                    <h3 className="mb-2 font-semibold">{item.title}</h3>
+                    <h3 className="font-display mb-2 font-semibold">
+                      {item.title}
+                    </h3>
 
                     <p className="text-text-secondary text-sm leading-6">
                       {item.description}

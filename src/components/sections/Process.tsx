@@ -40,7 +40,7 @@ export function Process() {
     <Section id="process" className="bg-background">
       <Reveal>
         <div className="mx-auto mb-16 max-w-2xl text-center md:mb-24">
-          <h2 className="mb-6 text-3xl font-bold md:text-5xl">
+          <h2 className="font-display mb-6 text-3xl font-bold md:text-5xl">
             Development Process
           </h2>
           <p className="text-text-secondary text-lg">
@@ -62,7 +62,7 @@ export function Process() {
                   <div
                     className={`w-full pl-16 md:w-[calc(50%-3rem)] md:pl-0 ${isEven ? 'md:text-left' : 'md:text-right'}`}
                   >
-                    <h3 className="mb-2 text-xl font-bold text-white">
+                    <h3 className="font-display mb-2 text-xl font-bold text-white">
                       {step.title}
                     </h3>
                     <p className="text-text-secondary">{step.description}</p>

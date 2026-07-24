@@ -29,7 +29,7 @@ export function Testimonials() {
     <Section id="testimonials" className="bg-background relative">
       <Reveal>
         <div className="mx-auto mb-16 max-w-2xl text-center md:mb-24">
-          <h2 className="mb-6 text-3xl font-bold md:text-5xl">
+          <h2 className="font-display mb-6 text-3xl font-bold md:text-5xl">
             Client Feedback
           </h2>
           <p className="text-text-secondary text-lg">

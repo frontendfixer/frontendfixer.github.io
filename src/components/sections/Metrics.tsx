@@ -18,7 +18,7 @@ export function Metrics() {
               delay={i * 0.1}
               className="px-4 text-center"
             >
-              <div className="to-text-secondary mb-2 bg-linear-to-br from-white bg-clip-text text-4xl font-bold tracking-tight text-transparent md:text-5xl">
+              <div className="to-text-secondary font-display mb-2 bg-linear-to-br from-white bg-clip-text text-4xl font-bold tracking-tight text-transparent md:text-5xl">
                 {metric.value}
               </div>
               <div className="text-text-muted text-sm font-medium tracking-wider uppercase">
