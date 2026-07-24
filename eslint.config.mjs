@@ -15,6 +15,7 @@ export default defineConfig([
     '.nitro',
     '.tanstack',
     'src/routeTree.gen.ts',
+    'server.ts',
   ]),
   js.configs.recommended,
   ...tseslint.configs.recommended,

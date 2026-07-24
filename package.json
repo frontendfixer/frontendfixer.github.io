@@ -5,12 +5,13 @@
   "type": "module",
   "packageManager": "bun@1.3.14",
   "engines": {
-    "node": ">=20"
+    "node": ">=24",
+    "bun": ">=1.3.14"
   },
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
-    "start": "srvx serve --prod --entry dist/server/server.js --static ../client",
+    "start": "bun run server.ts",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "lint": "eslint . --max-warnings 0",
@@ -35,7 +36,6 @@
     "react": "^19.2.7",
     "react-confetti-explosion": "^3.0.3",
     "react-dom": "^19.2.7",
-    "srvx": "^0.12.4",
     "tailwind-merge": "^3.6.0",
     "validator": "^13.15.35"
   },

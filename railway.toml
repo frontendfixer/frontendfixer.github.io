@@ -1,7 +1,7 @@
 [build]
 builder = "RAILPACK"
 buildCommand = "bun run build"
-watchPatterns = ["src/**", "public/**", "vite.config.ts", "package.json", "bun.lock"]
+watchPatterns = ["src/**", "public/**", "vite.config.ts", "server.ts", "package.json", "bun.lock"]
 
 [deploy]
 startCommand = "bun run start"
