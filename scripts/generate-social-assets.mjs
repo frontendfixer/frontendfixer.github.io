@@ -1,9 +1,10 @@
 import { Buffer } from 'node:buffer';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
+import { fileURLToPath, URL } from 'node:url';
 import { deflateSync } from 'node:zlib';
 
-const PUBLIC_DIR = new URL('../public/', import.meta.url);
+const PUBLIC_DIR = fileURLToPath(new URL('../public/', import.meta.url));
 
 const COLORS = {
   background: '#09090b',
@@ -467,7 +468,7 @@ function encodeIco(pngBuffer, width, height) {
 }
 
 function writePng(relativePath, canvas) {
-  const outputPath = join(PUBLIC_DIR.pathname, relativePath);
+  const outputPath = join(PUBLIC_DIR, relativePath);
 
   mkdirSync(dirname(outputPath), { recursive: true });
   writeFileSync(outputPath, encodePng(canvas));
@@ -484,6 +485,6 @@ writePng('apple-touch-icon.png', drawIcon(180));
 writePng('favicon-32x32.png', favicon32);
 writePng('favicon-16x16.png', drawIcon(16));
 writeFileSync(
-  join(PUBLIC_DIR.pathname, 'favicon.ico'),
+  join(PUBLIC_DIR, 'favicon.ico'),
   encodeIco(encodePng(favicon32), 32, 32),
 );
