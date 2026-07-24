@@ -111,8 +111,8 @@ export function seo(options: SeoOptions = {}): {
   const resolvedTitle = buildTitle(title);
   const resolvedDescription = description ?? siteConfig.description;
   const resolvedUrl = resolveUrl(url ?? '/');
-  const resolvedImage = resolveUrl(image ?? '/og-image.png');
-  const resolvedTwitterImage = resolveUrl(image ?? '/twitter-image.png');
+  const resolvedImage = resolveUrl(image ?? '/og-image.webp');
+  const resolvedTwitterImage = resolveUrl(image ?? '/twitter-image.webp');
   const resolvedType = type ?? siteConfig.openGraph.type;
   const resolvedKeywords = (keywords ?? siteConfig.keywords).join(', ');
 
