@@ -1,9 +1,9 @@
 import { Briefcase } from 'lucide-react';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
-import heroDashboard from '#assets/images/portfolio/hero-dashboard.webp';
-import { GlassLaptopPanel } from '#components/GlassLaptopPanel';
-import { ContactButton } from '#components/sections/ContactButton';
+import heroDashboard from '#/assets/images/portfolio/hero-dashboard.webp';
+import { GlassLaptopPanel } from '#/components/GlassLaptopPanel';
+import { ContactButton } from '#/components/sections/ContactButton';
 
 import { Container } from '../ui/Container';
 import { Reveal } from '../ui/Reveal';
@@ -69,14 +69,6 @@ export function HeroSection() {
             <Reveal delay={0.15}>
               <div className="mt-6 flex flex-wrap items-center gap-4 md:mt-10">
                 <ContactButton />
-
-                {/*<a*/}
-                {/*  href="#projects"*/}
-                {/*  className="border-border hover:bg-surface inline-flex h-14 items-center justify-center rounded-2xl border px-8 text-base font-medium transition-all duration-300 hover:-translate-y-0.5"*/}
-                {/*>*/}
-                {/*  View Projects*/}
-                {/*  <ArrowRight className="ml-2 h-4 w-4" />*/}
-                {/*</a>*/}
               </div>
             </Reveal>
 

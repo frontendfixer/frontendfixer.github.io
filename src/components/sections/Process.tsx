@@ -2,6 +2,7 @@ import { LifeBuoy, PenTool, Rocket, Search, Terminal } from 'lucide-react';
 
 import { Reveal } from '../ui/Reveal';
 import { Section } from '../ui/Section';
+
 const processSteps = [
   {
     icon: Search,

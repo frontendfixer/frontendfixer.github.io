@@ -1,6 +1,6 @@
 import { ArrowUpRight, BriefcaseBusiness, Cloud, Code2 } from 'lucide-react';
 
-import profilePlaceholder from '#assets/images/portfolio/profile-placeholder.webp';
+import profilePlaceholder from '#/assets/images/portfolio/profile-placeholder.webp';
 
 import { Reveal } from '../ui/Reveal';
 import { Section } from '../ui/Section';

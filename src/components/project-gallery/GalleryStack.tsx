@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { memo, useState } from 'react';
 
-import { cn } from '#lib/utils';
+import { cn } from '#/lib/utils.ts';
 
 import { cardOffsets, gallerySpring } from './gallery.constants';
 import { getGalleryLayoutId } from './gallery.utils';

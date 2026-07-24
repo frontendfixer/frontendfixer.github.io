@@ -1,7 +1,7 @@
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { memo } from 'react';
 
-import { cn } from '#lib/utils';
+import { cn } from '#/lib/utils.ts';
 
 interface GalleryControlsProps {
   onClose: () => void;

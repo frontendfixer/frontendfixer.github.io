@@ -1,7 +1,7 @@
 import { motion, useReducedMotion } from 'framer-motion';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
-import { cn } from '#lib/utils';
+import { cn } from '#/lib/utils';
 
 interface RevealProps {
   children: ReactNode;

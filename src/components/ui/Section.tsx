@@ -1,6 +1,9 @@
-import React, { ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import React from 'react';
 
-import { cn } from '#lib/utils';
+import { cn } from '#/lib/utils';
+
+import { Container } from './Container';
 
 interface SectionProps extends React.HTMLAttributes<HTMLDivElement> {
   id?: string;
@@ -8,8 +11,6 @@ interface SectionProps extends React.HTMLAttributes<HTMLDivElement> {
   containerClass?: string;
   className?: string;
 }
-
-import { Container } from './Container';
 
 export function Section({
   id,

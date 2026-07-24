@@ -2,18 +2,12 @@ import emailjs from '@emailjs/browser';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ArrowUpRight, Loader2, Mail, MapPin, Send } from 'lucide-react';
-import {
-  ChangeEvent,
-  SubmitEventHandler,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import type { ChangeEvent, SubmitEventHandler } from 'react';
 import validator from 'validator';
 
-import workspaceImage from '#assets/images/portfolio/workspace-placeholder.png';
-import { SOCIALS_USERNAME } from '#config/social.ts';
+import workspaceImage from '#/assets/images/portfolio/workspace-placeholder.png';
+import { SOCIALS_USERNAME } from '#/config/social.ts';
 
 import { Button } from '../ui/Button';
 import { Reveal } from '../ui/Reveal';

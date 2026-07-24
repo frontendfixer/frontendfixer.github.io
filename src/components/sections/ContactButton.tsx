@@ -1,6 +1,6 @@
 import { ArrowRight } from 'lucide-react';
 
-import { Button } from '#components/ui/Button.tsx';
+import { Button } from '#/components/ui/Button.tsx';
 
 interface ContactButtonProps {
   text?: string;

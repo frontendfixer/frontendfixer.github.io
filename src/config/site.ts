@@ -1,4 +1,4 @@
-import { SOCIALS_USERNAME } from '#config/social.ts';
+import { SOCIALS_USERNAME } from '#/config/social.ts';
 
 export interface OpenGraphConfig {
   type: string;

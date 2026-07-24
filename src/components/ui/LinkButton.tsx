@@ -1,8 +1,8 @@
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import type { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 
-import { Button } from '#components/ui/Button.tsx';
+import { Button } from '#/components/ui/Button.tsx';
 
 interface LinkButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   href: string;

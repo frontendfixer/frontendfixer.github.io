@@ -1,10 +1,9 @@
 import { Menu, Terminal, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
-
-import { ContactButton } from '#components/sections/ContactButton.tsx';
-import { Button } from '#components/ui/Button';
-import { Container } from '#components/ui/Container';
-import { cn } from '#lib/utils';
+import { cn } from '#/lib/utils.ts';
+import { Container } from '#/components/ui/Container.tsx';
+import { ContactButton } from '#/components/sections/ContactButton.tsx';
+import { Button } from '#/components/ui/Button.tsx';
 
 const navItems = [
   { name: 'Services', href: '#services' },

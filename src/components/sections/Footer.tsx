@@ -2,7 +2,7 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ArrowUpRight, Mail } from 'lucide-react';
 
-import { SOCIALS_USERNAME } from '#config/social.ts';
+import { SOCIALS_USERNAME } from '#/config/social.ts';
 
 import { Container } from '../ui/Container';
 

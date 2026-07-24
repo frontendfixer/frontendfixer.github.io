@@ -1,14 +1,14 @@
 import { faExternalLink } from '@fortawesome/free-solid-svg-icons';
 import { CheckCircle2, Lock, Rocket, Server } from 'lucide-react';
 
-import vaultDashboard1 from '#assets/images/portfolio/featured-project/vaultdrive-dashboard-0.webp';
-import vaultDashboard2 from '#assets/images/portfolio/featured-project/vaultdrive-dashboard-1.webp';
-import vaultDashboard5 from '#assets/images/portfolio/featured-project/vaultdrive-dashboard-2.webp';
-import vaultDashboard3 from '#assets/images/portfolio/featured-project/vaultdrive-dashboard-4.webp';
-import vaultDashboard4 from '#assets/images/portfolio/featured-project/vaultdrive-dashboard-5.webp';
-import vaultDashboard6 from '#assets/images/portfolio/featured-project/vaultdrive-dashboard-6.webp';
-import { ProjectGallery } from '#components/project-gallery';
-import { LinkButton } from '#components/ui/LinkButton';
+import vaultDashboard1 from '#/assets/images/portfolio/featured-project/vaultdrive-dashboard-0.webp';
+import vaultDashboard2 from '#/assets/images/portfolio/featured-project/vaultdrive-dashboard-1.webp';
+import vaultDashboard5 from '#/assets/images/portfolio/featured-project/vaultdrive-dashboard-2.webp';
+import vaultDashboard3 from '#/assets/images/portfolio/featured-project/vaultdrive-dashboard-4.webp';
+import vaultDashboard4 from '#/assets/images/portfolio/featured-project/vaultdrive-dashboard-5.webp';
+import vaultDashboard6 from '#/assets/images/portfolio/featured-project/vaultdrive-dashboard-6.webp';
+import { ProjectGallery } from '#/components/project-gallery';
+import { LinkButton } from '#/components/ui/LinkButton';
 
 import { Reveal } from '../ui/Reveal';
 import { Section } from '../ui/Section';

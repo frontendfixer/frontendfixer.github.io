@@ -1,5 +1,6 @@
 import { Container } from '../ui/Container';
 import { Reveal } from '../ui/Reveal';
+
 const metrics = [
   { value: '30+', label: 'Projects shipped' },
   { value: '4+', label: 'Years in production' },

@@ -1,16 +1,11 @@
-import {
-  createRootRoute,
-  HeadContent,
-  Outlet,
-  Scripts,
-} from '@tanstack/react-router';
-import type { ReactNode } from 'react';
+import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router';
+import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools';
+import { TanStackDevtools } from '@tanstack/react-devtools';
 
-import Navigation from '#components/layout/Navigation';
-import { siteConfig } from '#config/site';
-import { buildStructuredDataScripts } from '#lib/seo';
-
-import appCss from '../index.css?url';
+import appCss from '../styles.css?url';
+import Navigation from '#/components/layout/Navigation.tsx';
+import { siteConfig } from '#/config/site.ts';
+import { buildStructuredDataScripts } from '#/lib/seo.ts';
 
 export const Route = createRootRoute({
   head: () => ({
@@ -46,26 +41,29 @@ export const Route = createRootRoute({
     ],
     scripts: buildStructuredDataScripts(),
   }),
-  component: RootComponent,
+  shellComponent: RootDocument,
 });
 
-function RootComponent() {
+function RootDocument({ children }: { children: React.ReactNode }) {
   return (
-    <RootDocument>
-      <Navigation />
-      <Outlet />
-    </RootDocument>
-  );
-}
-
-function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
-  return (
-    <html lang={siteConfig.language}>
+    <html lang="en">
       <head>
         <HeadContent />
       </head>
       <body>
+        <Navigation />
         {children}
+        <TanStackDevtools
+          config={{
+            position: 'bottom-right',
+          }}
+          plugins={[
+            {
+              name: 'Tanstack Router',
+              render: <TanStackRouterDevtoolsPanel />,
+            },
+          ]}
+        />
         <Scripts />
       </body>
     </html>
