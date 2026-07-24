@@ -5,6 +5,7 @@ export interface OpenGraphConfig {
   image: string;
   imageWidth: number;
   imageHeight: number;
+  imageAlt: string;
   siteName: string;
 }
 
@@ -40,9 +41,9 @@ const siteUrl = import.meta.env.VITE_SITE_URL ?? DEFAULT_SITE_URL;
 
 export const siteConfig: SiteConfig = {
   siteName: 'FrontendFixer',
-  title: 'FrontendFixer | Full-Stack Developer for SaaS & MVPs',
+  title: 'FrontendFixer | SaaS & Cloud-Native Full-Stack Engineer',
   description:
-    'I help startups and growing businesses design, build, and scale secure cloud-native SaaS products using React, NestJS, AWS, and modern backend architecture.',
+    'I build secure, scalable SaaS products with React, NestJS, TypeScript, AWS, and modern cloud architecture.',
   url: siteUrl,
   locale: 'en_US',
   language: 'en',
@@ -54,15 +55,21 @@ export const siteConfig: SiteConfig = {
   backgroundColor: '#09090B',
   keywords: [
     'full stack developer',
-    'SaaS developer',
-    'MVP development',
-    'React developer',
-    'NestJS',
+    'React',
     'TypeScript',
+    'NestJS',
+    'Node.js',
     'AWS',
-    'freelance developer',
-    'cloud-native applications',
-    'FrontendFixer',
+    'Cloudflare',
+    'Docker',
+    'PostgreSQL',
+    'Prisma',
+    'SaaS',
+    'MVP development',
+    'cloud architecture',
+    'backend engineer',
+    'frontend developer',
+    'freelance software engineer',
   ],
   twitter: {
     card: 'summary_large_image',
@@ -75,6 +82,7 @@ export const siteConfig: SiteConfig = {
     image: `${siteUrl}/og-image.png`,
     imageWidth: 1200,
     imageHeight: 630,
+    imageAlt: 'FrontendFixer Portfolio',
     siteName: 'FrontendFixer',
   },
   robots: 'index, follow',
