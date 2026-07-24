@@ -5,6 +5,8 @@ export interface OpenGraphConfig {
   image: string;
   imageWidth: number;
   imageHeight: number;
+  imageType: string;
+  imageAlt: string;
   siteName: string;
 }
 
@@ -13,6 +15,7 @@ export interface TwitterConfig {
   site: string;
   creator: string;
   image: string;
+  imageAlt: string;
 }
 
 export interface SiteConfig {
@@ -69,12 +72,15 @@ export const siteConfig: SiteConfig = {
     site: '@' + SOCIALS_USERNAME.twitter,
     creator: '@' + SOCIALS_USERNAME.twitter,
     image: `${siteUrl}/twitter-image.png`,
+    imageAlt: 'FrontendFixer — Full-Stack Developer for SaaS & MVPs',
   },
   openGraph: {
     type: 'website',
     image: `${siteUrl}/og-image.png`,
     imageWidth: 1200,
     imageHeight: 630,
+    imageType: 'image/png',
+    imageAlt: 'FrontendFixer — Full-Stack Developer for SaaS & MVPs',
     siteName: 'FrontendFixer',
   },
   robots: 'index, follow',
