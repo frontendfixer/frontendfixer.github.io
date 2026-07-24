@@ -34,7 +34,7 @@ export interface SiteConfig {
   robots: string;
 }
 
-const siteUrl = import.meta.env.VITE_SITE_URL;
+const siteUrl = import.meta.env.VITE_SITE_URL ?? 'https://frontendfixer.dev';
 
 export const siteConfig: SiteConfig = {
   siteName: 'FrontendFixer',

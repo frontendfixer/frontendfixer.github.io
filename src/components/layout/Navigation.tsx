@@ -1,6 +1,5 @@
 import { Menu, Terminal, X } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { Outlet } from 'react-router-dom';
 
 import { ContactButton } from '#components/sections/ContactButton.tsx';
 import { Button } from '#components/ui/Button';
@@ -13,11 +12,10 @@ const navItems = [
   { name: 'About', href: '#about' },
 ];
 
-const Navigation = () => {
+export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // Navbar background on scroll
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -34,7 +32,6 @@ const Navigation = () => {
     };
   }, []);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : '';
 
@@ -43,7 +40,6 @@ const Navigation = () => {
     };
   }, [isOpen]);
 
-  // Close menu with Escape
   useEffect(() => {
     if (!isOpen) return;
 
@@ -60,7 +56,6 @@ const Navigation = () => {
     };
   }, [isOpen]);
 
-  // Close menu when switching to desktop
   useEffect(() => {
     const media = window.matchMedia('(min-width: 768px)');
 
@@ -108,7 +103,6 @@ const Navigation = () => {
               </span>
             </a>
 
-            {/* Desktop Navigation */}
             <div className="hidden items-center gap-8 md:flex">
               <ul className="flex items-center gap-12">
                 {navItems.map(item => (
@@ -127,7 +121,6 @@ const Navigation = () => {
               <ContactButton />
             </div>
 
-            {/* Mobile Toggle */}
             <Button
               variant="outline"
               className="text-text-secondary relative z-50 rounded-md p-2 hover:text-white md:hidden"
@@ -146,7 +139,6 @@ const Navigation = () => {
         </Container>
       </header>
 
-      {/* Mobile Navigation */}
       <nav
         id="mobile-navigation"
         aria-label="Mobile navigation"
@@ -195,9 +187,6 @@ const Navigation = () => {
           </div>
         </div>
       </nav>
-      <Outlet />
     </>
   );
-};
-
-export default Navigation;
+}

@@ -56,7 +56,8 @@
     }
   },
   "include": [
-    "src"
+    "src",
+    "src/routeTree.gen.ts"
   ],
   "references": [
     {
