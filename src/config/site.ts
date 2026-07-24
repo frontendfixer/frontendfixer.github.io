@@ -3,6 +3,7 @@ import { SOCIALS_USERNAME } from '#config/social.ts';
 export interface OpenGraphConfig {
   type: string;
   image: string;
+  imageAlt: string;
   imageWidth: number;
   imageHeight: number;
   siteName: string;
@@ -13,6 +14,7 @@ export interface TwitterConfig {
   site: string;
   creator: string;
   image: string;
+  imageAlt: string;
 }
 
 export interface SiteConfig {
@@ -69,10 +71,14 @@ export const siteConfig: SiteConfig = {
     site: '@' + SOCIALS_USERNAME.twitter,
     creator: '@' + SOCIALS_USERNAME.twitter,
     image: `${siteUrl}/twitter-image.png`,
+    imageAlt:
+      'FrontendFixer social preview card for full-stack SaaS and MVP development.',
   },
   openGraph: {
     type: 'website',
     image: `${siteUrl}/og-image.png`,
+    imageAlt:
+      'FrontendFixer social preview card for full-stack SaaS and MVP development.',
     imageWidth: 1200,
     imageHeight: 630,
     siteName: 'FrontendFixer',

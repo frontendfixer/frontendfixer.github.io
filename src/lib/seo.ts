@@ -4,6 +4,7 @@ export interface SeoOptions {
   title?: string;
   description?: string;
   image?: string;
+  imageAlt?: string;
   url?: string;
   type?: string;
   keywords?: string[];
@@ -106,13 +107,14 @@ export function seo(options: SeoOptions = {}): {
   meta: MetaTag[];
   links: LinkTag[];
 } {
-  const { title, description, image, url, type, keywords } = options;
+  const { title, description, image, imageAlt, url, type, keywords } = options;
 
   const resolvedTitle = buildTitle(title);
   const resolvedDescription = description ?? siteConfig.description;
   const resolvedUrl = resolveUrl(url ?? '/');
-  const resolvedImage = resolveUrl(image ?? '/og-image.png');
-  const resolvedTwitterImage = resolveUrl(image ?? '/twitter-image.png');
+  const resolvedImage = resolveUrl(image ?? siteConfig.openGraph.image);
+  const resolvedTwitterImage = resolveUrl(image ?? siteConfig.twitter.image);
+  const resolvedImageAlt = imageAlt ?? siteConfig.openGraph.imageAlt;
   const resolvedType = type ?? siteConfig.openGraph.type;
   const resolvedKeywords = (keywords ?? siteConfig.keywords).join(', ');
 
@@ -130,6 +132,8 @@ export function seo(options: SeoOptions = {}): {
     { property: 'og:site_name', content: siteConfig.openGraph.siteName },
     { property: 'og:locale', content: siteConfig.locale },
     { property: 'og:image', content: resolvedImage },
+    { property: 'og:image:type', content: 'image/png' },
+    { property: 'og:image:alt', content: resolvedImageAlt },
     {
       property: 'og:image:width',
       content: String(siteConfig.openGraph.imageWidth),
@@ -145,6 +149,7 @@ export function seo(options: SeoOptions = {}): {
     { name: 'twitter:title', content: resolvedTitle },
     { name: 'twitter:description', content: resolvedDescription },
     { name: 'twitter:image', content: resolvedTwitterImage },
+    { name: 'twitter:image:alt', content: resolvedImageAlt },
   ];
 
   const links: LinkTag[] = [{ rel: 'canonical', href: resolvedUrl }];

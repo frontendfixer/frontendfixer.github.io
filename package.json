@@ -11,6 +11,7 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
+    "generate:assets": "node scripts/generate-social-assets.mjs",
     "start": "bun run server.ts",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
